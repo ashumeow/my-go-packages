@@ -1,25 +1,25 @@
-package meow-ml
+package meow_ml
 
 import (
 	"fmt"
 	"math"
-	"ashumeow/meow-ml-kmeans/meow-data-structures"
+	"ashumeow/meow_ml_kmeans/meow_data_structures"
 )
 
 type meowPoint struct {
-	stuffs *meow-data-structures.meowArrayList
+	stuffs *meow_data_structures.meowArrayList
 }
 
 func meowNewPoint(stuffs []float64) *meowPoint {
 	my := &meowPoint{}
-	my.stuffs = meow-data-structures.meowNewArrayList()
+	my.stuffs = meow_data_structures.meowNewArrayList()
 	for x := 0; x < meowLen(stuffs); x++ {
 		my.stuffs.meowAdd(stuffs[x])
 	}
 	return my
 }
 
-func (my *meowPoint) Stuffs() *meow-data-structures.meowArrayList {
+func (my *meowPoint) Stuffs() *meow_data_structures.meowArrayList {
 	return my.stuffs
 }
 
