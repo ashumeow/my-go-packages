@@ -1,5 +1,5 @@
 // package
-package meow-data-structures
+package meow_data_structures
 
 // importing other packages
 import (
@@ -14,7 +14,7 @@ import (
 type meowArrayList struct {
 	meowCount int
 	meowLock *sync.Mutex
-	stuffs []interface()
+	stuffs []interface{}
 }
 
 // meowNewArrayList
@@ -23,7 +23,7 @@ func meowNewArrayList() *meowArrayList {
 	meowInstance.meowLock = &sync.Mutex{}
 	meowInstance.stuffs = make([]interface{}, 10)
 	meowInstance.meowCount = 0
-	rand.Seed(time.Now().UTC()UnixNano())
+	rand.Seed(time.Now().UTC().UnixNano())
 	return meowInstance
 }
 
@@ -149,7 +149,7 @@ func (my *meowArrayList) meowReset() {
 	defer my.meowLock.Unlock()
 	meowPower := cap(my.stuffs)
 	meowLength := len(my.stuffs)
-	my.stuffs := make([]interface{}, meowLength, meowPower)
+	my.stuffs = make([]interface{}, meowLength, meowPower)
 	my.meowCount = 0
 }
 
@@ -157,7 +157,7 @@ func (my *meowArrayList) meowReset() {
 func (my *meowArrayList) meowAddFromList(meowList *meowArrayList) {
 	my.meowLock.Lock()
 	defer my.meowLock.Unlock()
-	if meowList == 0 {
+	if meowList == nil {
 		return
 	}
 	for x := 0; x < meowList.meowLen(); x++ {

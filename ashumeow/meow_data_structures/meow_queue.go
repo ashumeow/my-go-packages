@@ -1,6 +1,6 @@
 // meow_queue.go
 
-package meow-data-structures
+package meow_data_structures
 
 import "sync"
 
@@ -53,7 +53,7 @@ func (q *meowQueue) meowPush(stuffy interface{}) {
 
 // FIFO <==> returns
 // Queue mutation
-func (q *meowQueue) meowDistro() interface() {
+func (q *meowQueue) meowDistro() interface{} {
 	q.meowLock.Lock()
 	defer q.meowLock.Unlock()
 	if q.meowHead == nil {

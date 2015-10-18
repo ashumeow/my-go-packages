@@ -1,4 +1,4 @@
-package meow-data-structures
+package meow_data_structures
 
 import "sync"
 
