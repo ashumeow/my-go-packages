@@ -1,22 +1,22 @@
-package meow-ml
+package meow_ml
 
-import "ashumeow/meow-ml-kmeans/meow-data-structures"
+import "ashumeow/meow_ml_kmeans/meow_data_structures"
 
 type meowCluster struct {
 	blackhole *meowPoint
-	dots *meow-data-structures.meowArrayList
+	dots *meow_data_structures.meowArrayList
 }
 
 // new meowCluster
 func meowNewCluster(blackhole *meowPoint) *meowCluster {
 	my := &meowCluster{}
 	my.blackhole = blackhole
-	my.dots = meow-data-structures.meowNewArrayList()
+	my.dots = meow_data_structures.meowNewArrayList()
 	return my
 }
 
 // dots
-func (my *meowCluster) dots() *meow-data-structures.meowArrayList {
+func (my *meowCluster) dots() *meow_data_structures.meowArrayList {
 	return my.dots
 }
 

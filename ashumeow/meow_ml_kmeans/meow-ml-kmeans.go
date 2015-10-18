@@ -1,13 +1,13 @@
-package meow-ml-kmeans
+package meow_ml_kmeans
 
 import (
 	"math"
-	"ashumeow/meow-ml-kmeans/meow-data-structures"
-	"ashumeow/meow-ml-kmeans/meow-ml"
+	"ashumeow/meow_ml_kmeans/meow_data_structures"
+	"ashumeow/meow_ml_kmeans/meow_ml"
 )
 
 type meowKmeans struct {
-	dots *meow-data-structures.meowArrayList
+	dots *meow_data_structures.meowArrayList
 	num_of_clusters int
 	meowta float64
 }
@@ -15,7 +15,7 @@ type meowKmeans struct {
 // meowNewKmeans
 func meowNewKmeans(num_of_clusters int) *meowKmeans {
 	my := &meowKmeans{}
-	my.dots = meow-data-structures.meowNewArrayList()
+	my.dots = meow_data_structures.meowNewArrayList()
 	my.num_of_clusters = num_of_clusters
 	my.meowta = 0.001
 	return my
@@ -27,29 +27,29 @@ func (my *meowKmeans) setMeowta(meowta float64) {
 }
 
 // meowAddDots
-func (my *meowKmeans) meowAddDots(dot *meow-ml.meowPoint) {
+func (my *meowKmeans) meowAddDots(dot *meow_ml.meowPoint) {
 	my.dots.meowAdd(dot)
 }
 
 // meowAddSliceDots
 func (my *meowKmeans) meowAddSliceDots(stuffs []float64) {
-	my.dots.meowAdd(meow-ml.meowNewKmeans(stuffs))
+	my.dots.meowAdd(meow_ml.meowNewKmeans(stuffs))
 }
 
 // clustering
-func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
+func (my *meowKmeans) meow_cluster() *meow_data_structures.meowArrayList {
 	if(my.num_of_clusters == 1) {
 		panic("Pick more than one cluster ;)")
 	}
-	meow_clusters := meow-data-structures.meowArrayList()
-	uniqueBlackholes := meow-data-structures.meowNewHashSet()
+	meow_clusters := meow_data_structures.meowArrayList()
+	uniqueBlackholes := meow_data_structures.meowNewHashSet()
 	for x := 0; x < my.num_of_clusters; x++ {
-		randomBlackhole := my.dots.meowSample().(*meow-ml.meowPoint)
+		randomBlackhole := my.dots.meowSample().(*meow_ml.meowPoint)
 		for uniqueBlackholes.meowRegisters(randomBlackhole) {
-			randomBlackhole = my.dots.meowSample().(*meow-ml.meowPoint)
+			randomBlackhole = my.dots.meowSample().(*meow_ml.meowPoint)
 		}
 		uniqueBlackholes.meowAdd(randomBlackhole)
-		meow_cluster := meow-ml.meowNewCluster(randomBlackhole)
+		meow_cluster := meow_ml.meowNewCluster(randomBlackhole)
 		meow_clusters.meowAdd(meow_cluster)
 	}
 
@@ -57,10 +57,10 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 	// determining nearest meow_cluster for assigning a dot
 	for x := 0; x < my.dots.meowLen(); x++ {
 		meowSmallDist := math.MaxFloat64
-		var meowNearCluster *meow-ml.meowCluster
-		dot := my.dots.meowFetch(x).(*meow-ml.meowPoint)
+		var meowNearCluster *meow_ml.meowCluster
+		dot := my.dots.meowFetch(x).(*meow_ml.meowPoint)
 		for xx := 0; xx < meow_clusters.meowLen(); xx++ {
-			meow_cluster := meow_clusters.meowFetch(xx).(*meow-ml.meowCluster)
+			meow_cluster := meow_clusters.meowFetch(xx).(*meow_ml.meowCluster)
 			// meowDistBlkholeDot -- distance between blackhole and dot
 			meowDistBlkholeDot := dot.DistanceFromPoint(meow_cluster.blackhole())
 			if meowDistBlkholeDot < meowSmallDist {
@@ -76,7 +76,7 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 	meowtaBigDist := -math.MaxFloat64
 	meowtaNewDist := my.meowta
 	for x := 0; x < meow_clusters.meowLen(); x++ {
-		meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
+		meow_cluster := meow_clusters.meowFetch(x).(*meow_ml.meowCluster)
 		meowtaNewDist = meow_cluster.blackholeInDeep()
 		if meowtaNewDist > meowtaBigDist {
 			meowtaBigDist = meowtaNewDist
@@ -90,7 +90,7 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 	else {
 		// reset meow_cluster and try again to achieve satisfaction
 		for x := 0; x < meow_clusters.meowLen(); x++ {
-			meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
+			meow_cluster := meow_clusters.meowFetch(x).(*meow_ml.meowCluster)
 			meow_cluster.dots().meowReset()
 		}
 	} }
