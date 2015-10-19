@@ -81,7 +81,7 @@ func (my *meowArrayList) meowSlice() []interface{} {
 func (my *meowArrayList) meowIndex(o interface{}) int {
 	my.meowLock.Lock()
 	defer my.meowLock.Unlock()
-	return meow_index(o)
+	return my.meow_index(o)
 }
 func (my *meowArrayList) meow_index(o interface{}) int {
 	meow_indexer := -1
