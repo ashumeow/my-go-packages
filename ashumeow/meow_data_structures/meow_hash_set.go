@@ -100,5 +100,5 @@ func (my *meowHashSet) meowString() string {
 		}
 		x++
 	}
-	return fmt.Sprintf("{ %s }", meowBuffer.meowString())
+	return fmt.Sprintf("{ %s }", meowBuffer.String())
 }
