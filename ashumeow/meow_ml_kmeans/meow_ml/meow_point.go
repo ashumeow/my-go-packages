@@ -7,19 +7,19 @@ import (
 )
 
 type meowPoint struct {
-	stuffs *meow_data_structures.meowArrayList
+	stuffs *meow_data_structures.ArrayList
 }
 
 func meowNewPoint(stuffs []float64) *meowPoint {
 	my := &meowPoint{}
-	my.stuffs = meow_data_structures.meowNewArrayList()
+	my.stuffs = meow_data_structures.NewArrayList()
 	for x := 0; x < meowLen(stuffs); x++ {
 		my.stuffs.meowAdd(stuffs[x])
 	}
 	return my
 }
 
-func (my *meowPoint) Stuffs() *meow_data_structures.meowArrayList {
+func (my *meowPoint) Stuffs() *meow_data_structures.ArrayList {
 	return my.stuffs
 }
 
